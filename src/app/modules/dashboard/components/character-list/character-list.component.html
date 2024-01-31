@@ -1,0 +1,33 @@
+<section infiniteScroll 
+[infiniteScrollDistance]="2" 
+[infiniteScrollUpDistance]="2" 
+(scrolled)="onScroll()"
+>
+<nav>
+    <h1>RICK AND MORTY</h1>
+</nav>
+
+<div class="nav-search" [formGroup]="searchForm">
+    <input 
+    type="text" 
+    placeholder="Search"
+    formControlName="searchText"
+    />
+    <button (click)="searchCharacter()">Search</button>
+</div>
+
+<div class="row container">
+    <div class="card" *ngFor="let character of characters$ | async">
+        <div class="row">
+            <div>
+                <img [src]="character.image" alt="character.name"  height="150px"/>
+            </div>
+            <div>
+                <h3>Name: {{ character.name }}</h3>
+                <h3>Species: {{ character.species }}</h3>
+                <h3>Gender: {{ character.gender }}</h3>
+            </div> 
+        </div>
+    </div>
+</div>
+</section>
